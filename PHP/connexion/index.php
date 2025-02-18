@@ -1,7 +1,11 @@
 <?php
 session_start();
 include "../config/database.php";
+<<<<<<< HEAD
 include "../usersRepository.php";
+=======
+include "usersRepository.php";
+>>>>>>> 6c0e3e34ba0a997b50a3a1c60a1e418dd8103fa7
 
 // Si déjà connecté, redirection vers le jeu
 if (isset($_SESSION['user_id'])) {
@@ -27,4 +31,4 @@ if (!empty($_POST)) {
 }
 
 $template = "index";
-include "../layout.phtml";
+include "index.phtml";
