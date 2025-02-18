@@ -4,10 +4,12 @@ include "../config/database.php";
 include "../repository/usersRepository.php";
 
 if (!empty($_POST)) {
-    if (isset($_POST['email']) && isset($_POST['password'])) {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        
+    // Récupération des données du formulaire
+    $email = isset($_POST["email"]) ? $_POST["email"] : null;
+    $password = isset($_POST["password"]) ? $_POST["password"] : null;
+    $nickname = isset($_POST["nickname"]) ? $_POST["nickname"] : null;
+
+    if ($email && $password && $nickname) {
         // Vérification du format du mot de passe
         $regex = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W).{12,}$/';
         
@@ -18,19 +20,22 @@ if (!empty($_POST)) {
                 if ($existingUser) {
                     $error = "Cet email est déjà utilisé";
                 } else {
-                    // Hash du mot de passe avant stockage
+                    // Hash du mot de passe
                     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+                    
+                    // Création de l'utilisateur
                     createUser($email, $passwordHash);
                     
-                    // Redirection vers la connexion
-                    header("Location: connexion.php?success=1");
+                    // Message de succès et redirection
+                    echo "Compte créé avec succès !";
+                    header("Location: connexion.php");
                     exit;
                 }
-            } catch (PDOException $e) {
-                $error = "Erreur lors de la création du compte";
+            } catch (Exception $e) {
+                $error = "Erreur lors de la création du compte : " . $e->getMessage();
             }
         } else {
-            $error = "Le mot de passe doit contenir au moins 12 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.";
+            $error = "Le mot de passe ne répond pas aux critères de sécurité.";
         }
     } else {
         $error = "Tous les champs sont requis.";
