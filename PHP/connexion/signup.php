@@ -1,7 +1,7 @@
 <?php
 
-include "config/database.php";
-include "repository/usersRepository.php";
+include "../config/database.php";
+include "../repository/usersRepository.php";
 
 if (!empty($_POST)) {
     if (isset($_POST['password']) && isset($_POST['email'])) {
@@ -29,4 +29,4 @@ if (!empty($_POST)) {
 }
 
 $template = "signup";
-include "layout.phtml";
+include "../layout.phtml";

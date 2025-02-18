@@ -1,8 +1,8 @@
 <?php
 
 
-include "config/database.php";
-include "repository/usersRepository.php";
+include "../config/database.php";
+include "../repository/usersRepository.php";
 
 
 //démarrage du système de session
@@ -45,4 +45,4 @@ if (isset($_SESSION['user']) && isset($_SESSION['user_id'])) {
 
 
 $template = "connexion";
-include "layout.phtml";
+include "../layout.phtml";

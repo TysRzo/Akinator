@@ -1,7 +1,7 @@
 <?php
 session_start();
-include "config/database.php";
-include "repository/usersRepository.php";
+include "../config/database.php";
+include "../repository/usersRepository.php";
 
 if(isset($_SESSION['user_id'])) {
     $userId = $_SESSION['user_id'];
