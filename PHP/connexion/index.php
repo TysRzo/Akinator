@@ -27,4 +27,4 @@ if (!empty($_POST)) {
 }
 
 $template = "index";
-include "../layout.phtml";
+include "layout.phtml";

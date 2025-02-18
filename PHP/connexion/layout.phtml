@@ -1,50 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/0a4bedb4d5.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="style.css">
-
     <title>Akinator</title>
 </head>
 
 <body>
-    
     <header>
         <div class="header">
-            
             <p>Akinator</p>
-            
             <?php if(isset($_SESSION['user_id'])): ?>
                 <a href="logout.php" title="Se déconnecter">
                     <i class="fa-solid fa-right-from-bracket"></i>
                 </a>
             <?php endif; ?>
-            
         </div>
-        
-        
-        
-        <!--<nav>-->
-        <!--    <a href="connexion.php">Se connecter</a>-->
-        <!--    <a href="signup.php">S'inscrire</a>-->
-        <!--</nav>-->
     </header>
     
     <main>
-       
         <?php include "$template.phtml" ?>
-        
-        
     </main>
     
     <footer>
-            <p class="footer">
-                @2025 - 3W Academy
-            </p>
-        </footer>
+        <p class="footer">
+            @2025 - 3W Academy
+        </p>
+    </footer>
 </body>
-
-</html>
+</html> 

@@ -2,7 +2,7 @@
 
 
 include "../config/database.php";
-include "usersRepository.php";
+include "../repository/usersRepository.php";
 
 
 //démarrage du système de session
@@ -45,4 +45,4 @@ if (isset($_SESSION['user']) && isset($_SESSION['user_id'])) {
 
 
 $template = "connexion";
-include "connexion.phtml";
+include "layout.phtml";
