@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once('../config/database.php');
+require_once('../repository/usersRepository.php');
 
 if (!isset($_SESSION['result'])) {
     header('Location: game.php');
@@ -8,7 +9,7 @@ if (!isset($_SESSION['result'])) {
 }
 
 $pdo = getConnexion();
-$query = $pdo->prepare("SELECT * FROM results WHERE id = ?");
+$query = $pdo->prepare("SELECT * FROM result WHERE id = ?");
 $query->execute([$_SESSION['result']]);
 $character = $query->fetch();
 

@@ -21,17 +21,17 @@ function deleteUser(int $userId) {
 
 function saveGame(int $userId, int $resultId) {
     $pdo = getConnexion();
-    $query = $pdo->prepare("INSERT INTO games (user_id, result_id, date) VALUES (?, ?, NOW())");
-    $query->execute([$userId, $resultId]);
+    $query = $pdo->prepare("INSERT INTO game (users_id, result_id, date) VALUES (?, ?, NOW())");
+    return $query->execute([$userId, $resultId]);
 }
 
 function getUserGames(int $userId) {
     $pdo = getConnexion();
     $query = $pdo->prepare("
-        SELECT g.date, r.name, r.description, r.image_url 
-        FROM games g 
-        JOIN results r ON g.result_id = r.id 
-        WHERE g.user_id = ? 
+        SELECT g.date, r.name, r.description, r.picture 
+        FROM game g 
+        JOIN result r ON g.result_id = r.id 
+        WHERE g.users_id = ? 
         ORDER BY g.date DESC
     ");
     $query->execute([$userId]);

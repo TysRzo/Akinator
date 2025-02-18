@@ -3,7 +3,7 @@
     
     <h2><?= htmlspecialchars($character['name']) ?></h2>
     <p><?= htmlspecialchars($character['description']) ?></p>
-    <img src="<?= htmlspecialchars($character['image_url']) ?>" alt="<?= htmlspecialchars($character['name']) ?>">
+    <img src="<?= htmlspecialchars($character['picture']) ?>" alt="<?= htmlspecialchars($character['name']) ?>">
 
     <form method="POST" action="game.php">
         <button type="submit" name="restart">Rejouer</button>

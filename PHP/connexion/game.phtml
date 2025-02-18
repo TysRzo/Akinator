@@ -2,7 +2,7 @@
     <h1>Akinator</h1>
     
     <h2>Question <?= $_SESSION['current_question'] ?></h2>
-    <p><?= htmlspecialchars($current_question['text']) ?></p>
+    <p><?= htmlspecialchars($current_question['Text']) ?></p>
 
     <form method="POST">
         <button type="submit" name="response" value="Oui">Oui</button>

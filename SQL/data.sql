@@ -1,3 +1,13 @@
+-- Création de la table games
+CREATE TABLE games (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    result_id INT NOT NULL,
+    date DATETIME NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    FOREIGN KEY (result_id) REFERENCES result(id)
+);
+
 -- Insertion des résultats
 INSERT INTO results (name, description, image_url) VALUES
 ('Miko', 'Un personnage maniant un katana.', 'miko.png'),

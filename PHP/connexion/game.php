@@ -10,14 +10,20 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Initialisation du jeu
-if (!isset($_SESSION['game_started'])) {
-    $_SESSION['current_question'] = 1; // On commence par la première question
+if (!isset($_SESSION['game_started']) || isset($_POST['restart'])) {
+    // Récupérer la première question
+    $pdo = getConnexion();
+    $query = $pdo->prepare("SELECT id FROM questions WHERE is_first_question = 1 LIMIT 1");
+    $query->execute();
+    $first_question = $query->fetch();
+    
+    $_SESSION['current_question'] = $first_question['id'];
     $_SESSION['game_started'] = true;
 }
 
 // Récupération de la question courante
 $pdo = getConnexion();
-$query = $pdo->prepare("SELECT text FROM questions WHERE id = ?");
+$query = $pdo->prepare("SELECT Text FROM questions WHERE id = ?");
 $query->execute([$_SESSION['current_question']]);
 $current_question = $query->fetch();
 
