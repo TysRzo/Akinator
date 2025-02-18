@@ -1,10 +1,13 @@
 <div>
-    <h1>Bienvenue dans le jeu Akinator</h1>
-    <p>Pensez à un personnage, je vais essayer de le deviner...</p>
+    <h1>Akinator</h1>
     
-    <div>
-        <button onclick="startGame()">Commencer le jeu</button>
-    </div>
-    
-    <a href="logout.php">Se déconnecter</a>
+    <h2>Question <?= $_SESSION['current_question'] ?></h2>
+    <p><?= htmlspecialchars($current_question['text']) ?></p>
+
+    <form method="POST">
+        <button type="submit" name="response" value="Oui">Oui</button>
+        <button type="submit" name="response" value="Non">Non</button>
+    </form>
+
+    <a href="logout.php">Quitter</a>
 </div> 

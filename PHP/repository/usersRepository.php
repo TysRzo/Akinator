@@ -1,19 +1,9 @@
 <?php
 
 function createUser(string $email, string $username, string $password) {
-    try {
-        $pdo = getConnexion();
-        $query = $pdo->prepare("INSERT INTO users (email, username, password) VALUES (?, ?, ?)");
-        $result = $query->execute([$email, $username, $password]);
-        
-        if (!$result) {
-            throw new Exception("Erreur lors de l'insertion");
-        }
-        
-        return true;
-    } catch (PDOException $e) {
-        throw new Exception("Erreur lors de la création de l'utilisateur : " . $e->getMessage());
-    }
+    $pdo = getConnexion();
+    $query = $pdo->prepare("INSERT INTO users (email, username, password) VALUES (?, ?, ?)");
+    return $query->execute([$email, $username, $password]);
 }
 
 function getUserByEmail(string $email) {

@@ -4,41 +4,33 @@ include "../config/database.php";
 include "../repository/usersRepository.php";
 
 if (!empty($_POST)) {
-    // Récupération des données du formulaire
-    $email = isset($_POST["email"]) ? $_POST["email"] : null;
-    $password = isset($_POST["password"]) ? $_POST["password"] : null;
-    $nickname = isset($_POST["nickname"]) ? $_POST["nickname"] : null;
+    $email = $_POST["email"] ?? '';
+    $username = $_POST["username"] ?? '';
+    $password = $_POST["password"] ?? '';
 
-    if ($email && $password && $nickname) {
+    if ($email && $password && $username) {
         // Vérification du format du mot de passe
         $regex = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W).{12,}$/';
         
         if (preg_match($regex, $password)) {
-            try {
-                // Vérifier si l'email existe déjà
-                $existingUser = getUserByEmail($email);
-                if ($existingUser) {
-                    $error = "Cet email est déjà utilisé";
-                } else {
-                    // Hash du mot de passe
-                    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-                    
-                    // Création de l'utilisateur
-                    createUser($email, $passwordHash);
-                    
-                    // Message de succès et redirection
-                    echo "Compte créé avec succès !";
+            $existingUser = getUserByEmail($email);
+            
+            if ($existingUser) {
+                $error = "Cet email est déjà utilisé";
+            } else {
+                $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+                if (createUser($email, $username, $passwordHash)) {
                     header("Location: connexion.php");
                     exit;
+                } else {
+                    $error = "Erreur lors de la création du compte";
                 }
-            } catch (Exception $e) {
-                $error = "Erreur lors de la création du compte : " . $e->getMessage();
             }
         } else {
-            $error = "Le mot de passe ne répond pas aux critères de sécurité.";
+            $error = "Le mot de passe doit contenir au moins 12 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.";
         }
     } else {
-        $error = "Tous les champs sont requis.";
+        $error = "Tous les champs sont requis";
     }
 }
 
