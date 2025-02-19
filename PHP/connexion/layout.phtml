@@ -19,7 +19,19 @@
                 </a>
             <?php endif; ?>
         </div>
+        <nav>
+            <a href="index.php">Accueil</a>
+            <?php if(isset($_SESSION['user_id'])): ?>
+                <a href="game.php">Jouer</a>
+                <a href="account.php">Mon compte</a>
+                <a href="logout.php">Déconnexion</a>
+            <?php else: ?>
+                <a href="connexion.php">Connexion</a>
+                <a href="signup.php">Créer un compte</a>
+            <?php endif; ?>
+        </nav>
     </header>
+<<<<<<< HEAD
     
     <nav>
         <a href="index.php">Accueil</a>
@@ -34,6 +46,9 @@
     </nav>
     
     <img src="../assets/images/akinator.webp" alt="Akinator" class="header-logo">
+=======
+    <img src="../assets/images/akinator.png" alt="Akinator" class="header-logo">
+>>>>>>> 8ab53a68d96768448b2a4fbbf5832da686c22636
     
     <main>
         <?php 
