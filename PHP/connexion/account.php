@@ -9,16 +9,22 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Modification du mot de passe
-if (isset($_POST['new_password'])) {
-    $password = $_POST['new_password'];
+if (isset($_POST['current_password']) && isset($_POST['new_password'])) {
+    $currentPassword = $_POST['current_password'];
+    $newPassword = $_POST['new_password'];
+    
     $regex = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W).{12,}$/';
     
-    if (preg_match($regex, $password)) {
-        $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-        updatePassword($_SESSION['user_id'], $passwordHash);
-        $success = "Mot de passe modifié avec succès";
+    if (preg_match($regex, $newPassword)) {
+        $newPasswordHash = password_hash($newPassword, PASSWORD_DEFAULT);
+        
+        if (updatePassword($_SESSION['user_id'], $currentPassword, $newPasswordHash)) {
+            $success = "Mot de passe modifié avec succès";
+        } else {
+            $error = "Mot de passe actuel incorrect";
+        }
     } else {
-        $error = "Le mot de passe ne répond pas aux critères de sécurité";
+        $error = "Le nouveau mot de passe ne répond pas aux critères de sécurité";
     }
 }
 

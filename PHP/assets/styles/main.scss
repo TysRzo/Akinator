@@ -2,8 +2,8 @@
 $primary-color: #2d5a27;
 $text-color: #333;
 $white: #fff;
-$gradient-start: #ffcaca;
-$gradient-end: #b8d8ff;
+$gradient-start: #6f7;
+$gradient-end: #7f45ff;
 
 // Reset et styles de base
 * {
@@ -22,7 +22,7 @@ body {
 nav {
     background-color: $primary-color;
     padding: 1rem;
-    text-align: right;
+    text-align: center;
     
     a {
         color: $white;
@@ -36,8 +36,12 @@ nav {
 }
 
 // Logo et titre
+.header{
+    text-align: center;
+    font-size: 150%;
+}
 .header-logo {
-    width: 200px;
+    width: 20%;
     height: auto;
     display: block;
     margin: 1.25rem auto;
@@ -103,7 +107,5 @@ footer {
     text-align: center;
     padding: 1.25rem;
     color: $text-color;
-    position: fixed;
-    bottom: 0;
     width: 100%;
 } 

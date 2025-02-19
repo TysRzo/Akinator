@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #6f7, #7f45ff);
+  min-height: 100vh;
+}
+
+nav {
+  background-color: #2d5a27;
+  padding: 1rem;
+  text-align: center;
+}
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1.25rem;
+}
+nav a:hover {
+  text-decoration: underline;
+}
+
+.header {
+  text-align: center;
+  font-size: 150%;
+}
+
+.header-logo {
+  width: 20%;
+  height: auto;
+  display: block;
+  margin: 1.25rem auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5em;
+  margin: 1.25rem 0;
+  color: #333;
+}
+
+.main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+form {
+  margin: 1.25rem auto;
+  max-width: 400px;
+}
+form label {
+  display: block;
+  margin: 0.625rem 0;
+}
+form input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+form button {
+  background-color: #2d5a27;
+  color: #fff;
+  padding: 0.625rem 1.25rem;
+  border: none;
+  cursor: pointer;
+}
+form button:hover {
+  opacity: 0.9;
+}
+
+.error {
+  color: #ff0000;
+  margin: 0.625rem 0;
+}
+
+.success {
+  color: #008000;
+  margin: 0.625rem 0;
+}
+
+footer {
+  text-align: center;
+  padding: 1.25rem;
+  color: #333;
+  width: 100%;
+}
+
+/*# sourceMappingURL=main.css.map */

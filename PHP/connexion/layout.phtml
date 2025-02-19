@@ -19,24 +19,30 @@
                 </a>
             <?php endif; ?>
         </div>
+        <nav>
+            <a href="index.php">Accueil</a>
+            <?php if(isset($_SESSION['user_id'])): ?>
+                <a href="game.php">Jouer</a>
+                <a href="account.php">Mon compte</a>
+                <a href="logout.php">Déconnexion</a>
+            <?php else: ?>
+                <a href="connexion.php">Connexion</a>
+                <a href="signup.php">Créer un compte</a>
+            <?php endif; ?>
+        </nav>
     </header>
-    
-    <nav>
-        <a href="index.php">Accueil</a>
-        <?php if(isset($_SESSION['user_id'])): ?>
-            <a href="game.php">Jouer</a>
-            <a href="account.php">Mon compte</a>
-            <a href="logout.php">Déconnexion</a>
-        <?php else: ?>
-            <a href="connexion.php">Connexion</a>
-            <a href="signup.php">Créer un compte</a>
-        <?php endif; ?>
-    </nav>
-    
-    <img src="../assets/images/akinator.wepb" alt="Akinator" class="header-logo">
+    <img src="../assets/images/akinator.png" alt="Akinator" class="header-logo">
     
     <main>
-        <?php include "$template.phtml" ?>
+        <?php 
+        if (isset($template) && !empty($template) && file_exists($template . '.phtml')) {
+            include $template . '.phtml';
+        } else {
+            // Redirection vers la page d'accueil si aucun template n'est défini
+            header('Location: index.php');
+            exit;
+        }
+        ?>
     </main>
     
     <footer>
