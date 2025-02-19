@@ -15,8 +15,14 @@ function getUserByEmail(string $email) {
 
 function deleteUser(int $userId) {
     $pdo = getConnexion();
-    $query = $pdo->prepare("DELETE FROM users WHERE id = ?");
+    
+    // D'abord supprimer les parties de l'utilisateur
+    $query = $pdo->prepare("DELETE FROM game WHERE users_id = ?");
     $query->execute([$userId]);
+    
+    // Ensuite supprimer l'utilisateur
+    $query = $pdo->prepare("DELETE FROM users WHERE id = ?");
+    return $query->execute([$userId]);
 }
 
 function saveGame(int $userId, int $resultId) {
@@ -59,8 +65,19 @@ function getUserGames(int $userId) {
     return $query->fetchAll();
 }
 
-function updatePassword(int $userId, string $newPassword) {
+function updatePassword(int $userId, string $currentPassword, string $newPassword) {
     $pdo = getConnexion();
+    
+    // 1. Vérifier le mot de passe actuel
+    $query = $pdo->prepare("SELECT password FROM users WHERE id = ?");
+    $query->execute([$userId]);
+    $user = $query->fetch();
+    
+    if (!$user || !password_verify($currentPassword, $user['password'])) {
+        return false; // Mot de passe actuel incorrect
+    }
+    
+    // 2. Mettre à jour avec le nouveau mot de passe
     $query = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
     return $query->execute([$newPassword, $userId]);
 }

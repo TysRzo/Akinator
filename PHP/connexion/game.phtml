@@ -1,16 +1,20 @@
 <div class="main">
-    <h1>Akinator</h1>
+    <h1>Akinagator</h1>
     
     <?php if(isset($error)): ?>
         <div class="error"><?= $error ?></div>
     <?php endif; ?>
 
     <h2>Question <?= $_SESSION['current_question'] ?></h2>
-    <p><?= htmlspecialchars($current_question['Text']) ?></p>
+    <p><?= htmlspecialchars($_SESSION['current_text']) ?></p>
 
     <form method="POST">
         <button type="submit" name="response" value="Oui">Oui</button>
         <button type="submit" name="response" value="Non">Non</button>
+    </form>
+
+    <form method="POST">
+        <button type="submit" name="restart">Recommencer</button>
     </form>
 
     <a href="logout.php">Quitter</a>
