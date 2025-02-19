@@ -21,8 +21,29 @@ function deleteUser(int $userId) {
 
 function saveGame(int $userId, int $resultId) {
     $pdo = getConnexion();
-    $query = $pdo->prepare("INSERT INTO game (users_id, result_id, date) VALUES (?, ?, NOW())");
-    return $query->execute([$userId, $resultId]);
+    
+    // Récupérer le nom du résultat
+    $query = $pdo->prepare("SELECT name FROM result WHERE id = ?");
+    $query->execute([$resultId]);
+    $result = $query->fetch();
+    
+    if (!$result) {
+        throw new Exception("Résultat non trouvé");
+    }
+    
+    // Insérer dans la table game
+    $query = $pdo->prepare("
+        INSERT INTO game 
+        (users_id, result_id, result, date) 
+        VALUES 
+        (?, ?, ?, NOW())
+    ");
+    
+    return $query->execute([
+        $userId,
+        $resultId,
+        $result['name']
+    ]);
 }
 
 function getUserGames(int $userId) {
@@ -36,4 +57,10 @@ function getUserGames(int $userId) {
     ");
     $query->execute([$userId]);
     return $query->fetchAll();
+}
+
+function updatePassword(int $userId, string $newPassword) {
+    $pdo = getConnexion();
+    $query = $pdo->prepare("UPDATE users SET password = ? WHERE id = ?");
+    return $query->execute([$newPassword, $userId]);
 }

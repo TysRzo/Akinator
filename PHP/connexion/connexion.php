@@ -1,12 +1,10 @@
 <?php
 
 
-include "../config/database.php";
-include "../repository/usersRepository.php";
-
-
-//démarrage du système de session
 session_start();
+require_once('../config/database.php');
+require_once('../repository/usersRepository.php');
+
 
 // Si déjà connecté, redirection vers le jeu
 if (isset($_SESSION['user_id'])) {
@@ -23,7 +21,7 @@ if (!empty($_POST)) {
         $user = getUserByEmail($email);
         
         if ($user && password_verify($password, $user['password'])) {
-            $_SESSION['user_id'] = (int)$user['id'];
+            $_SESSION['user_id'] = $user['id'];
             header('Location: game.php');
             exit();
         } else {

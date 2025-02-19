@@ -1,7 +1,6 @@
 <?php
 session_start();
-include "../config/database.php";
-include "../repository/usersRepository.php";
+require_once('../config/database.php');
 
 // Si déjà connecté, redirection vers le jeu
 if (isset($_SESSION['user_id'])) {

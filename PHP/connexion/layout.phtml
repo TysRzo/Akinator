@@ -20,6 +20,18 @@
         </div>
     </header>
     
+    <nav>
+        <a href="index.php">Accueil</a>
+        <?php if(isset($_SESSION['user_id'])): ?>
+            <a href="game.php">Jouer</a>
+            <a href="account.php">Mon compte</a>
+            <a href="logout.php">Déconnexion</a>
+        <?php else: ?>
+            <a href="connexion.php">Connexion</a>
+            <a href="signup.php">Créer un compte</a>
+        <?php endif; ?>
+    </nav>
+    
     <main>
         <?php include "$template.phtml" ?>
     </main>

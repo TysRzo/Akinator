@@ -1,12 +1,10 @@
-<div>
-    <div>
-        <h1>Akinator</h1>
-        <h2>Devinez le personnage</h2>
-        <p>Répondez aux questions et je devinerai votre personnage.</p>
-        
-        <div>
-            <a href="connexion.php">Se connecter</a>
-            <a href="signup.php">S'inscrire</a>
-        </div>
-    </div>
+<div class="main">
+    <h1>Bienvenue sur Akinator</h1>
+    <p>Pensez à un personnage, je vais essayer de le deviner !</p>
+
+    <?php if(isset($_SESSION['user_id'])): ?>
+        <a href="game.php" class="btn">Jouer</a>
+    <?php else: ?>
+        <a href="connexion.php" class="btn">Se connecter pour jouer</a>
+    <?php endif; ?>
 </div>

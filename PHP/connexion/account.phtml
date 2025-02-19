@@ -1,0 +1,37 @@
+<div class="main">
+    <h1>Mon compte</h1>
+
+    <?php if(isset($success)): ?>
+        <div class="success"><?= $success ?></div>
+    <?php endif; ?>
+
+    <?php if(isset($error)): ?>
+        <div class="error"><?= $error ?></div>
+    <?php endif; ?>
+
+    <h2>Modifier le mot de passe</h2>
+    <form method="post">
+        <label for="new_password">Nouveau mot de passe :</label>
+        <input type="password" id="new_password" name="new_password" required>
+        <small>Le mot de passe doit contenir au moins 12 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.</small>
+        <button type="submit">Modifier</button>
+    </form>
+
+    <h2>Historique des parties</h2>
+    <?php if ($games): ?>
+        <ul>
+            <?php foreach($games as $game): ?>
+                <li>
+                    <?= date('d/m/Y H:i', strtotime($game['date'])) ?> - 
+                    <?= htmlspecialchars($game['name']) ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p>Aucune partie jouée</p>
+    <?php endif; ?>
+
+    <form method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer votre compte ?')">
+        <button type="submit" name="delete_account">Supprimer mon compte</button>
+    </form>
+</div> 
