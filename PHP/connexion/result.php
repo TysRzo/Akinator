@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once('../config/database.php');
+require_once('../repository/resultRepository.php');
 require_once('../repository/usersRepository.php');
 
 if (!isset($_SESSION['result'])) {
@@ -8,10 +8,7 @@ if (!isset($_SESSION['result'])) {
     exit;
 }
 
-$pdo = getConnexion();
-$query = $pdo->prepare("SELECT * FROM result WHERE id = ?");
-$query->execute([$_SESSION['result']]);
-$character = $query->fetch();
+$character = getResultById($_SESSION['result']);
 
 // Sauvegarde de la partie
 if (isset($_SESSION['user_id'])) {
