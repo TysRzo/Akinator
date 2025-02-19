@@ -1,0 +1,109 @@
+// Variables
+$primary-color: #2d5a27;
+$text-color: #333;
+$white: #fff;
+$gradient-start: #ffcaca;
+$gradient-end: #b8d8ff;
+
+// Reset et styles de base
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, $gradient-start, $gradient-end);
+    min-height: 100vh;
+}
+
+// Navigation
+nav {
+    background-color: $primary-color;
+    padding: 1rem;
+    text-align: right;
+    
+    a {
+        color: $white;
+        text-decoration: none;
+        margin-left: 1.25rem;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+// Logo et titre
+.header-logo {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: 1.25rem auto;
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 1.25rem 0;
+    color: $text-color;
+}
+
+// Conteneur principal
+.main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+// Formulaires
+form {
+    margin: 1.25rem auto;
+    max-width: 400px;
+    
+    label {
+        display: block;
+        margin: 0.625rem 0;
+    }
+    
+    input {
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    button {
+        background-color: $primary-color;
+        color: $white;
+        padding: 0.625rem 1.25rem;
+        border: none;
+        cursor: pointer;
+        
+        &:hover {
+            opacity: 0.9;
+        }
+    }
+}
+
+// Messages
+.error {
+    color: #ff0000;
+    margin: 0.625rem 0;
+}
+
+.success {
+    color: #008000;
+    margin: 0.625rem 0;
+}
+
+// Footer
+footer {
+    text-align: center;
+    padding: 1.25rem;
+    color: $text-color;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+} 
