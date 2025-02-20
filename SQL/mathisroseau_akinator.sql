@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db.3wa.io
--- Généré le : mar. 18 fév. 2025 à 21:05
+-- Généré le : jeu. 20 fév. 2025 à 07:49
 -- Version du serveur :  5.7.33-0ubuntu0.18.04.1-log
 -- Version de PHP : 8.0.3
 
@@ -73,6 +73,33 @@ CREATE TABLE `game` (
   `result_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Déchargement des données de la table `game`
+--
+
+INSERT INTO `game` (`id`, `result`, `date`, `users_id`, `result_id`) VALUES
+(29, 'Miko', '2025-02-19 20:11:10', 3, 1),
+(30, 'Miko', '2025-02-19 20:11:18', 3, 1),
+(31, 'Miko', '2025-02-19 20:11:29', 3, 1),
+(32, 'The Strongest Sorcerer/ GOJO', '2025-02-19 20:11:38', 3, 5),
+(33, 'Miko', '2025-02-19 20:11:42', 3, 1),
+(34, 'Miko', '2025-02-19 20:15:21', 3, 1),
+(35, 'Lunatic', '2025-02-19 20:15:30', 3, 2),
+(36, 'Fallen', '2025-02-19 20:15:37', 3, 3),
+(37, 'Wonderboy', '2025-02-19 20:17:42', 3, 9),
+(38, 'Miko', '2025-02-19 20:17:52', 3, 1),
+(39, 'Seigen', '2025-02-19 20:17:57', 3, 4),
+(40, 'Lunatic', '2025-02-19 20:18:01', 3, 2),
+(41, 'Shin Goren', '2025-02-19 20:18:09', 3, 7),
+(42, 'Fallen', '2025-02-19 20:21:25', 3, 3),
+(43, 'Fallen', '2025-02-19 20:21:28', 3, 3),
+(44, 'Fallen', '2025-02-19 20:26:34', 3, 3),
+(45, 'Fallen', '2025-02-19 20:26:38', 3, 3),
+(48, 'Miko', '2025-02-19 23:02:39', 5, 1),
+(49, 'Fallen', '2025-02-19 23:03:02', 5, 3),
+(50, 'Seigen', '2025-02-19 23:03:08', 5, 4),
+(51, 'Wonderboy', '2025-02-19 23:07:26', 5, 9);
+
 -- --------------------------------------------------------
 
 --
@@ -118,16 +145,16 @@ CREATE TABLE `result` (
 --
 
 INSERT INTO `result` (`id`, `name`, `description`, `picture`) VALUES
-(1, 'Miko', 'Un personnage maniant un katana.', 'miko.png'),
-(2, 'Lunatic', 'Un personnage combattant sans katana.', 'lunatic.png'),
-(3, 'Fallen', 'Un personnage qui peut voler.', 'fallen.png'),
-(4, 'Seigen', 'Un personnage qui ne peut pas voler.', 'seigen.png'),
-(5, 'The Strongest Sorcerer/ GOJO', 'Un personnage maîtrisant l\"infini.', 'gojo.png'),
-(6, 'The King of Curses/ Sukuna', 'Un roi des malédictions.', 'sukuna.png'),
-(7, 'Shin Goren', 'Un esprit démoniaque.', 'shin_goren.png'),
-(8, 'Goren', 'Un personnage ordinaire.', 'goren.png'),
-(9, 'Wonderboy', 'Un boxeur utilisant des gants.', 'wonderboy.png'),
-(10, 'Nakmuay', 'Un combattant sans gants.', 'nakmuay.png');
+(1, 'Miko', 'Un personnage maniant un katana.', 'miko.jpg'),
+(2, 'Lunatic', 'Un personnage combattant sans katana.', 'lunatic.jpg'),
+(3, 'Fallen', 'Un personnage qui peut voler.', 'fallen.jpg'),
+(4, 'Seigen', 'Un personnage qui ne peut pas voler.', 'seigen.jpg'),
+(5, 'The Strongest Sorcerer/ GOJO', 'Un personnage maîtrisant l\"infini.', 'gojo.jpg'),
+(6, 'The King of Curses/ Sukuna', 'Un roi des malédictions.', 'sukuna.jpg'),
+(7, 'Shin Goren', 'Un esprit démoniaque.', 'shin_goren.jpg'),
+(8, 'Goren', 'Un personnage ordinaire.', 'goren.jpg'),
+(9, 'Wonderboy', 'Un boxeur utilisant des gants.', 'wonderboy.jpg'),
+(10, 'Nakmuay', 'Un combattant sans gants.', 'nakmuay.jpg');
 
 -- --------------------------------------------------------
 
@@ -147,8 +174,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-(1, 'Emma', 'Emma@test.com', '$2y$10$jBM2odiVho8f6I9IHJjGfO9QvdPjOo/O6HShk2rOaVxdF6m20QlNq'),
-(2, 'Jade', 'jade@test.com', '$2y$10$9UmXRmOP3s./WjDUXHKWou4ZimE5PuIudDRUzW1ydd0tYt19rExta');
+(2, 'Jade', 'jade@test.com', '$2y$10$9UmXRmOP3s./WjDUXHKWou4ZimE5PuIudDRUzW1ydd0tYt19rExta'),
+(3, 'Emma', 'Emma@test.com', '$2y$10$I2NsKHsTOUUwT6oMIyLAbeX/obZNCaVrx6scmGN9MoBgKGPQE6RFu'),
+(5, 'Nilsou', 'Nilsou@test.com', '$2y$10$PB/xVvBwknxAnue.WrrPfORZShnlqF./aU1pmSW/qv90ck9RPWXAa');
 
 --
 -- Index pour les tables déchargées
@@ -203,7 +231,7 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT pour la table `game`
 --
 ALTER TABLE `game`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT pour la table `questions`
@@ -221,7 +249,7 @@ ALTER TABLE `result`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées
@@ -238,9 +266,8 @@ ALTER TABLE `answers`
 -- Contraintes pour la table `game`
 --
 ALTER TABLE `game`
-  ADD CONSTRAINT `fk_game_result` FOREIGN KEY (`result_id`) REFERENCES `result` (`id`) ON DELETE SET NULL,
-  ADD CONSTRAINT `fk_game_users` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `user_id` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_game_result` FOREIGN KEY (`result_id`) REFERENCES `result` (`id`),
+  ADD CONSTRAINT `fk_game_users` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

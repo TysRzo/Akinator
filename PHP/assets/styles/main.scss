@@ -108,4 +108,58 @@ footer {
     padding: 1.25rem;
     color: $text-color;
     width: 100%;
+}
+
+// Carte de personnage
+.character-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1.25rem auto;
+    max-width: 500px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    
+    h2 {
+        color: $primary-color;
+        margin-bottom: 1rem;
+    }
+}
+
+.character-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 1rem auto;
+    display: block;
+    border: 3px solid $primary-color;
+}
+
+.character-description {
+    margin: 1rem 0;
+    line-height: 1.5;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    
+    form {
+        margin: 0;
+    }
+}
+
+.quit-button {
+    display: inline-block;
+    background-color: #dc3545;
+    color: $white;
+    padding: 0.625rem 1.25rem;
+    text-decoration: none;
+    border-radius: 4px;
+    
+    &:hover {
+        opacity: 0.9;
+    }
 } 

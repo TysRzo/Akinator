@@ -1,15 +1,23 @@
 <div class="main">
     <h1>Akinagator a trouvé !</h1>
     
-    <h2><?= htmlspecialchars($character['name']) ?></h2>
-    <p><?= htmlspecialchars($character['description']) ?></p>
-    <img src="<?= htmlspecialchars($character['picture']) ?>" alt="<?= htmlspecialchars($character['name']) ?>">
+    <div class="character-card">
+        <h2><?= htmlspecialchars($character['name']) ?></h2>
+        <img 
+            src="../assets/images/<?= htmlspecialchars($character['picture']) ?>" 
+            alt="<?= htmlspecialchars($character['name']) ?>" 
+            class="character-image"
+        >
+        <p class="character-description"><?= htmlspecialchars($character['description']) ?></p>
+    </div>
 
     <p>Est-ce bien le personnage auquel vous pensiez ?</p>
 
-    <form method="POST" action="game.php">
-        <button type="submit" name="restart">Rejouer</button>
-    </form>
-    
-    <a href="logout.php">Quitter</a>
+    <div class="buttons">
+        <form method="POST" action="game.php">
+            <button type="submit" name="restart">Rejouer</button>
+        </form>
+        
+        <a href="logout.php" class="quit-button">Quitter</a>
+    </div>
 </div> 
